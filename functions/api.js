@@ -3,6 +3,11 @@ export async function onRequestPost(context) {
   const PAYTECH_API_SECRET = '666cbb401a9bd26cdd77ae597b76d50d1272313b68a4b4be9aa45098181ecb64';
   const BASE_URL = 'https://comptabo.pages.dev';
 
+  const corsHeaders = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  };
+
   try {
     const input = await context.request.json();
     const amount = parseInt(input.amount) || 0;
@@ -12,16 +17,15 @@ export async function onRequestPost(context) {
       return new Response(JSON.stringify({
         success: false,
         message: 'Montant minimum: 100 FCFA'
-      }), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      }), { headers: corsHeaders });
     }
 
     const reference = 'CPT' + Date.now() + Math.floor(Math.random() * 1000);
 
-    const formData = new URLSearchParams({
+    // Données pour PayTech
+    const paymentData = {
       item_name: 'COMPTABO - ' + description,
-      item_price: amount.toString(),
+      item_price: amount,
       currency: 'XOF',
       ref_command: reference,
       command_name: description,
@@ -30,42 +34,63 @@ export async function onRequestPost(context) {
       success_url: BASE_URL + '/success.html',
       cancel_url: BASE_URL + '/cancel.html',
       custom_field: JSON.stringify({ reference, amount })
-    });
+    };
+
+    // Convertir en form-urlencoded
+    const formBody = Object.keys(paymentData)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(paymentData[key]))
+      .join('&');
 
     const response = await fetch('https://paytech.sn/api/payment/request-payment', {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
         'API_KEY': PAYTECH_API_KEY,
-        'API_SECRET': PAYTECH_API_SECRET,
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'API_SECRET': PAYTECH_API_SECRET
       },
-      body: formData
+      body: formBody
     });
 
-    const result = await response.json();
+    const responseText = await response.text();
+    let result;
+
+    try {
+      result = JSON.parse(responseText);
+    } catch (e) {
+      return new Response(JSON.stringify({
+        success: false,
+        message: 'Réponse PayTech invalide',
+        debug: responseText.substring(0, 200)
+      }), { headers: corsHeaders });
+    }
 
     if (result.success == 1 && result.redirect_url) {
       return new Response(JSON.stringify({
         success: true,
         reference: reference,
         redirect_url: result.redirect_url
-      }), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      }), { headers: corsHeaders });
     } else {
       return new Response(JSON.stringify({
         success: false,
-        message: 'Erreur lors de la création du paiement'
-      }), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+        message: result.message || 'Erreur PayTech',
+        error: result.error || null
+      }), { headers: corsHeaders });
     }
   } catch (error) {
     return new Response(JSON.stringify({
       success: false,
-      message: 'Erreur serveur'
-    }), {
-      headers: { 'Content-Type': 'application/json' }
-    });
+      message: 'Erreur: ' + error.message
+    }), { headers: corsHeaders });
   }
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    }
+  });
 }
