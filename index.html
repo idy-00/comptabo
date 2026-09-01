@@ -24,27 +24,27 @@
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
         }
 
         .payment-card {
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
         .header {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 30px;
+            padding: 35px 30px;
             text-align: center;
         }
 
         .logo {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .logo span {
@@ -54,95 +54,103 @@
         .subtitle {
             color: rgba(255,255,255,0.7);
             font-size: 14px;
+            margin-bottom: 25px;
         }
 
-        .payment-icons {
+        .payment-methods {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .payment-icons img {
-            height: 30px;
-        }
-
-        .form-section {
-            padding: 30px;
-        }
-
-        .amount-display {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 12px;
-        }
-
-        .amount-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .amount-input-wrapper {
+        .payment-method {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .amount-input {
-            border: none;
-            background: transparent;
-            font-size: 36px;
-            font-weight: 700;
-            width: 180px;
-            text-align: center;
-            outline: none;
-            color: #1a1a2e;
-        }
-
-        .amount-currency {
-            font-size: 20px;
-            color: #666;
+            gap: 8px;
+            color: #fff;
+            font-size: 13px;
             font-weight: 500;
         }
 
+        .payment-method img {
+            height: 20px;
+        }
+
+        .payment-method.wave {
+            background: #1DC9F6;
+        }
+
+        .payment-method.om {
+            background: #F7941D;
+        }
+
+        .payment-method.card {
+            background: #1A1F71;
+        }
+
+        .form-section {
+            padding: 35px 30px;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .form-group label {
             display: block;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .form-group input {
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s;
+            font-family: inherit;
         }
 
-        .form-group input:focus {
+        .form-group input:focus, .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
         }
 
-        .row {
-            display: flex;
-            gap: 15px;
+        .form-group textarea {
+            resize: none;
+            height: 80px;
         }
 
-        .row .form-group {
-            flex: 1;
+        .amount-input-wrapper {
+            position: relative;
+        }
+
+        .amount-input-wrapper input {
+            padding-right: 70px;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .currency-badge {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #666;
+            font-size: 14px;
         }
 
         .btn-pay {
@@ -150,9 +158,9 @@
             padding: 18px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: #fff;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
@@ -160,11 +168,12 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-top: 10px;
         }
 
         .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
         .btn-pay:disabled {
@@ -173,283 +182,77 @@
             transform: none;
         }
 
+        .btn-pay svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .secure-info {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
         .secure-badge {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-top: 20px;
-            color: #666;
+            color: #28a745;
             font-size: 13px;
+            font-weight: 500;
         }
 
         .secure-badge svg {
-            width: 16px;
-            height: 16px;
-            fill: #28a745;
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
-        /* Modal OTP */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.6);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal {
-            background: #fff;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 400px;
-            overflow: hidden;
-            animation: modalSlide 0.3s ease;
-        }
-
-        @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .modal-header .logos {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .wave-logo {
-            background: #1DC9F6;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .visa-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1A1F71;
-            font-style: italic;
-        }
-
-        .modal-body {
-            padding: 30px;
+        .info-text {
             text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-top: 12px;
+            line-height: 1.5;
         }
 
-        .timer-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 4px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            position: relative;
-        }
-
-        .timer-progress {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid transparent;
-            border-top-color: #28a745;
-            animation: rotate 1s linear infinite;
-        }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
-        .timer-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .modal-subtitle {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .transaction-details {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-
-        .detail-row:not(:last-child) {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .detail-label {
-            color: #666;
-        }
-
-        .detail-value {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .otp-input {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 25px;
-        }
-
-        .otp-input input {
-            width: 50px;
-            height: 55px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: 600;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
-        .otp-input input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 15px;
-            background: #2196F3;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: #1976D2;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn-link {
-            background: none;
-            border: none;
-            color: #2196F3;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .btn-link:hover {
-            text-decoration: underline;
-        }
-
-        .btn-link.cancel {
-            color: #666;
-        }
-
-        /* Success Modal */
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #28a745;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: #fff;
-        }
-
-        /* Loading */
         .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            display: inline-block;
         }
 
         @keyframes spin {
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
         @media (max-width: 480px) {
+            .header {
+                padding: 30px 20px;
+            }
             .form-section {
-                padding: 20px;
+                padding: 30px 20px;
             }
-
-            .amount-input {
-                font-size: 28px;
-            }
-
-            .otp-input input {
-                width: 45px;
-                height: 50px;
+            .logo {
+                font-size: 30px;
             }
         }
     </style>
@@ -459,51 +262,39 @@
         <div class="payment-card">
             <div class="header">
                 <div class="logo">Compta<span>bo</span></div>
-                <div class="subtitle">Paiement sécurisé par PayTech</div>
-                <div class="payment-icons">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" height="25">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" height="35">
+                <div class="subtitle">Paiement sécurisé</div>
+                <div class="payment-methods">
+                    <div class="payment-method wave">
+                        <span>Wave</span>
+                    </div>
+                    <div class="payment-method om">
+                        <span>Orange Money</span>
+                    </div>
+                    <div class="payment-method card">
+                        <span>Visa / MC</span>
+                    </div>
                 </div>
             </div>
 
             <div class="form-section">
-                <div class="amount-display">
-                    <div class="amount-label">Montant à payer</div>
-                    <div class="amount-input-wrapper">
-                        <input type="number" id="amount" class="amount-input" placeholder="0" min="100">
-                        <span class="amount-currency">FCFA</span>
-                    </div>
-                </div>
+                <div class="error-message" id="errorMsg"></div>
 
                 <form id="paymentForm">
                     <div class="form-group">
-                        <label>Numéro de carte</label>
-                        <input type="text" id="cardNumber" placeholder="4950 6663 2566 XXXX" maxlength="19" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nom sur la carte</label>
-                        <input type="text" id="cardName" placeholder="JOHN DOE" style="text-transform: uppercase;" required>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Date d'expiration</label>
-                            <input type="text" id="expiry" placeholder="MM/AA" maxlength="5" required>
-                        </div>
-                        <div class="form-group">
-                            <label>CVV</label>
-                            <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                        <label>Montant</label>
+                        <div class="amount-input-wrapper">
+                            <input type="number" id="amount" placeholder="0" min="100" required>
+                            <span class="currency-badge">FCFA</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Numéro de téléphone</label>
-                        <input type="tel" id="phone" placeholder="+221 77 XXX XX XX" required>
+                        <label>Description (optionnel)</label>
+                        <textarea id="description" placeholder="Ex: Achat produit, Abonnement..."></textarea>
                     </div>
 
                     <button type="submit" class="btn-pay" id="btnPay">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                             <line x1="1" y1="10" x2="23" y2="10"></line>
                         </svg>
@@ -511,279 +302,75 @@
                     </button>
                 </form>
 
-                <div class="secure-badge">
-                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                    Paiement sécurisé SSL 256-bit
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal OTP -->
-    <div class="modal-overlay" id="otpModal">
-        <div class="modal">
-            <div class="modal-header">
-                <div class="logos">
-                    <div class="wave-logo">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                        wave
+                <div class="secure-info">
+                    <div class="secure-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        Paiement 100% sécurisé
                     </div>
-                    <div class="visa-logo">VISA</div>
+                    <p class="info-text">
+                        Vous serez redirigé vers PayTech pour choisir<br>
+                        votre mode de paiement (Wave, OM, Carte)
+                    </p>
                 </div>
-            </div>
-
-            <div class="modal-body">
-                <div class="timer-circle">
-                    <div class="timer-progress"></div>
-                    <span class="timer-text" id="timer">14:59</span>
-                </div>
-
-                <h2 class="modal-title">Confirmation d'achat</h2>
-                <p class="modal-subtitle">Entrez le code à 6 chiffres envoyé par SMS sur votre mobile</p>
-
-                <div class="transaction-details">
-                    <div class="detail-row">
-                        <span class="detail-label">Marchand:</span>
-                        <span class="detail-value">COMPTABO</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Montant:</span>
-                        <span class="detail-value" id="modalAmount">0 FCFA</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Date:</span>
-                        <span class="detail-value" id="modalDate">-</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Numéro de carte:</span>
-                        <span class="detail-value" id="modalCard">****</span>
-                    </div>
-                </div>
-
-                <div class="otp-input">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="0">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="1">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="2">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="3">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="4">
-                    <input type="text" maxlength="1" class="otp-digit" data-index="5">
-                </div>
-
-                <button class="btn-submit" id="btnVerify">ENVOYER</button>
-
-                <div class="modal-actions">
-                    <button class="btn-link" id="btnResend">RENVOYER LE CODE</button>
-                    <button class="btn-link cancel" id="btnCancel">ANNULER</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Success -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal">
-            <div class="modal-body">
-                <div class="success-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                </div>
-                <h2 class="modal-title">Paiement réussi !</h2>
-                <p class="modal-subtitle">Votre transaction a été effectuée avec succès.</p>
-                <div class="transaction-details">
-                    <div class="detail-row">
-                        <span class="detail-label">Référence:</span>
-                        <span class="detail-value" id="refNumber">-</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-label">Montant:</span>
-                        <span class="detail-value" id="successAmount">-</span>
-                    </div>
-                </div>
-                <button class="btn-submit" onclick="location.reload()">Nouvelle transaction</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Formatage numéro de carte
-        document.getElementById('cardNumber').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
-            let formatted = value.match(/.{1,4}/g)?.join(' ') || '';
-            e.target.value = formatted;
-        });
+        const form = document.getElementById('paymentForm');
+        const btn = document.getElementById('btnPay');
+        const errorMsg = document.getElementById('errorMsg');
 
-        // Formatage date expiration
-        document.getElementById('expiry').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.slice(0,2) + '/' + value.slice(2);
-            }
-            e.target.value = value;
-        });
-
-        // CVV uniquement chiffres
-        document.getElementById('cvv').addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\D/g, '');
-        });
-
-        // Navigation OTP
-        const otpInputs = document.querySelectorAll('.otp-digit');
-        otpInputs.forEach((input, index) => {
-            input.addEventListener('input', function(e) {
-                this.value = this.value.replace(/\D/g, '');
-                if (this.value && index < 5) {
-                    otpInputs[index + 1].focus();
-                }
-            });
-
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Backspace' && !this.value && index > 0) {
-                    otpInputs[index - 1].focus();
-                }
-            });
-
-            input.addEventListener('paste', function(e) {
-                e.preventDefault();
-                const paste = (e.clipboardData || window.clipboardData).getData('text');
-                const digits = paste.replace(/\D/g, '').slice(0, 6);
-                digits.split('').forEach((digit, i) => {
-                    if (otpInputs[i]) otpInputs[i].value = digit;
-                });
-                if (otpInputs[5]) otpInputs[5].focus();
-            });
-        });
-
-        // Timer
-        let timerInterval;
-        function startTimer() {
-            let time = 899; // 14:59
-            const timerEl = document.getElementById('timer');
-
-            timerInterval = setInterval(() => {
-                const minutes = Math.floor(time / 60);
-                const seconds = time % 60;
-                timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-                if (time <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('otpModal').classList.remove('active');
-                    alert('Le délai a expiré. Veuillez recommencer.');
-                }
-                time--;
-            }, 1000);
+        function showError(msg) {
+            errorMsg.textContent = msg;
+            errorMsg.classList.add('show');
+            setTimeout(() => errorMsg.classList.remove('show'), 5000);
         }
 
-        // Soumission formulaire
-        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const amount = document.getElementById('amount').value;
-            const cardNumber = document.getElementById('cardNumber').value;
-            const cardName = document.getElementById('cardName').value;
-            const expiry = document.getElementById('expiry').value;
-            const cvv = document.getElementById('cvv').value;
-            const phone = document.getElementById('phone').value;
+            const description = document.getElementById('description').value || 'Paiement Comptabo';
 
             if (!amount || amount < 100) {
-                alert('Le montant minimum est de 100 FCFA');
+                showError('Le montant minimum est de 100 FCFA');
                 return;
             }
 
-            if (cardNumber.replace(/\s/g, '').length < 16) {
-                alert('Numéro de carte invalide');
-                return;
-            }
-
-            const btn = document.getElementById('btnPay');
             btn.disabled = true;
-            btn.innerHTML = '<div class="spinner"></div> Traitement...';
+            btn.innerHTML = '<div class="spinner"></div> Redirection...';
 
-            // Appel API PayTech via backend PHP
             try {
                 const response = await fetch('api.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        amount: amount,
-                        phone: phone,
-                        cardNumber: cardNumber,
-                        cardName: cardName,
-                        expiry: expiry
+                        amount: parseInt(amount),
+                        description: description
                     })
                 });
 
                 const data = await response.json();
 
-                if (data.success) {
-                    // Afficher modal OTP
-                    const maskedCard = cardNumber.slice(-4);
-                    document.getElementById('modalAmount').textContent = parseInt(amount).toLocaleString('fr-FR') + ' FCFA';
-                    document.getElementById('modalDate').textContent = new Date().toLocaleDateString('fr-FR');
-                    document.getElementById('modalCard').textContent = '****' + maskedCard;
-
-                    document.getElementById('otpModal').classList.add('active');
-                    startTimer();
-                    otpInputs[0].focus();
+                if (data.success && data.redirect_url) {
+                    window.location.href = data.redirect_url;
                 } else {
-                    alert(data.message || 'Erreur lors du traitement');
+                    showError(data.message || 'Erreur lors de la création du paiement');
+                    btn.disabled = false;
+                    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg> Payer maintenant`;
                 }
             } catch (error) {
-                // Mode démo - afficher modal OTP quand même
-                const maskedCard = cardNumber.slice(-4);
-                document.getElementById('modalAmount').textContent = parseInt(amount).toLocaleString('fr-FR') + ' FCFA';
-                document.getElementById('modalDate').textContent = new Date().toLocaleDateString('fr-FR');
-                document.getElementById('modalCard').textContent = '****' + maskedCard;
-
-                document.getElementById('otpModal').classList.add('active');
-                startTimer();
-                otpInputs[0].focus();
+                showError('Erreur de connexion. Réessayez.');
+                btn.disabled = false;
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg> Payer maintenant`;
             }
-
-            btn.disabled = false;
-            btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                <line x1="1" y1="10" x2="23" y2="10"></line>
-            </svg> Payer maintenant`;
-        });
-
-        // Vérification OTP
-        document.getElementById('btnVerify').addEventListener('click', function() {
-            const otp = Array.from(otpInputs).map(i => i.value).join('');
-
-            if (otp.length !== 6) {
-                alert('Veuillez entrer le code complet à 6 chiffres');
-                return;
-            }
-
-            this.disabled = true;
-            this.innerHTML = '<div class="spinner"></div>';
-
-            // Simuler vérification
-            setTimeout(() => {
-                clearInterval(timerInterval);
-                document.getElementById('otpModal').classList.remove('active');
-
-                // Afficher succès
-                document.getElementById('refNumber').textContent = 'CPT-' + Date.now().toString().slice(-8);
-                document.getElementById('successAmount').textContent = document.getElementById('modalAmount').textContent;
-                document.getElementById('successModal').classList.add('active');
-
-                this.disabled = false;
-                this.textContent = 'ENVOYER';
-            }, 2000);
-        });
-
-        // Annuler
-        document.getElementById('btnCancel').addEventListener('click', function() {
-            clearInterval(timerInterval);
-            document.getElementById('otpModal').classList.remove('active');
-            otpInputs.forEach(i => i.value = '');
-        });
-
-        // Renvoyer code
-        document.getElementById('btnResend').addEventListener('click', function() {
-            alert('Un nouveau code a été envoyé sur votre téléphone.');
         });
     </script>
 </body>
