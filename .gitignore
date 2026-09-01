@@ -1,0 +1,16 @@
+# Configuration et secrets
+config.js
+.env
+*.env
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
