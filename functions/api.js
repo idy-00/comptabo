@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {
-  const PAYTECH_API_KEY = '7126b7e274320ad63d3d17ecf95b8a66c6a1a6816e1fcae7ca34707fe577de36';
-  const PAYTECH_API_SECRET = '666cbb401a9bd26cdd77ae597b76d50d1272313b68a4b4be9aa45098181ecb64';
+  const PAYTECH_API_KEY = 'a30dd0860b8fe70ed189f682ed7799718fb5315d2f5eb9ed1085155d224442f6';
+  const PAYTECH_API_SECRET = 'dd95c7bfc0a10ccc0652328b8bd03bf56758b690f8413e8e7fde292e23087e65';
   const BASE_URL = 'https://comptabo.pages.dev';
 
   const corsHeaders = {
